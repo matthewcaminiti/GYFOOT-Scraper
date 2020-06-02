@@ -6,12 +6,14 @@ Welcome to this lil' instagram scarping tool
 - Figure out way to subvert the login force (added 2020)
 - TEST scrape in python 2.x
 
-
 ## GYFOOT Scrape
 
 - This tool was created to assist a friend in need of training images for a CNN he was building
 - Doubled as an opportunity to teach him how selenium works
 - Updates to Instagram's web experience and their Graph API have rendered this currently broken
+
+## Quick Start:
+- Run `instaScrape_py3.py` however you like, follow input prompts
 
 ## Core Packages
 
