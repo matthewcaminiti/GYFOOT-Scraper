@@ -13,12 +13,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 def create_folder(hashtag): 
 	date = datetime.datetime.now().strftime("%b_%d")
 	try:
-		os.makedirs(os.getcwd() + '/' + hashtag + '_pictures_' + date)
+		os.makedirs(os.getcwd() + '/images/' + hashtag + '_pictures_' + date)
 	except OSError as e:
 		if e.errno != errno.EEXIST:
-			print("Folder /" + hashtag + "_pictures_" + date + "already exists!")
+			print("Folder /images/" + hashtag + "_pictures_" + date + "already exists!")
 			pass
-	return os.getcwd() + '/' + hashtag + '_pictures_' + date
+	return os.getcwd() + '/images/' + hashtag + '_pictures_' + date
 
 # returns list of plaintext of bodies
 # iterates until timelimit is reached
@@ -33,7 +33,7 @@ def get_webpage_from_hashtag(hashtag, timelimit):
 
 	last_height = browser.execute_script("return document.body.scrollHeight")
 	
-	yeet = 1
+	ctr = 1
 	while(True):
 		browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -45,11 +45,11 @@ def get_webpage_from_hashtag(hashtag, timelimit):
 			break
 		last_height = new_height
 
-		yeet += 1
+		ctr += 1
 		
 		bodyList.append(browser.execute_script("return document.body.innerHTML"))
 		
-		if(yeet == int(timelimit/wait_for_load_time)):
+		if(ctr == int(timelimit/wait_for_load_time)):
 			break
 
 	# instagram dynamically removes elements from the body depending on location of browser on page
@@ -140,13 +140,14 @@ def get_highquality_pics(hashtag, timelimie):
 
 		if(yeet == int(timelimit/wait_for_load_time)):
 			break
-		
 
-uinput = input("Enter hashtag: ")
-timelimit = int(input("Enter time limit: "))
 
-get_most_recent_pics(uinput, timelimit)
-# get_highquality_pics(uinput, timelimit)
+if __name__ == '__main__':	
+	uinput = input("Enter hashtag: ")
+	timelimit = int(input("Enter time limit: "))
+
+	get_most_recent_pics(uinput, timelimit)
+	# get_highquality_pics(uinput, timelimit)
 
 
 

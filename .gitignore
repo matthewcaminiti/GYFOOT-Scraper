@@ -1,1 +1,9 @@
+env/
+windows-env/
+gyfoot-env/
+
+
+debug.log
+
+
 images/
